@@ -14,9 +14,9 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.spring.learn</groupId>
-    <artifactId>com.spring.learn.spring_pet_clinic</artifactId>
+    <artifactId>spring_pet_clinic</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>com.spring.learn.spring_pet_clinic</name>
+    <name>spring_pet_clinic</name>
     <description>SFG Pet Clinic Project</description>
 
     <properties>
