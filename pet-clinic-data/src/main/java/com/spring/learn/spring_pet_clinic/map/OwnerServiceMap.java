@@ -1,6 +1,7 @@
 package com.spring.learn.spring_pet_clinic.map;
 
 import com.spring.learn.spring_pet_clinic.model.Owner;
+import com.spring.learn.spring_pet_clinic.model.Pet;
 import com.spring.learn.spring_pet_clinic.services.OwnerService;
 import com.spring.learn.spring_pet_clinic.services.PetService;
 import com.spring.learn.spring_pet_clinic.services.PetTypeService;
@@ -35,14 +36,15 @@ public class OwnerServiceMap extends AbstractMapService<Owner, Long> implements 
 
                     if(pet.getPetType() != null) {
                         if(pet.getPetType().getId() == null) {
-                            petTypeService.save(pet.getPetType());
+                            pet.setPetType(petTypeService.save(pet.getPetType()));
                         }
                     } else {
                         throw new RuntimeException("Pet Type is required");
                     }
 
                     if(pet.getId() == null) {
-                        petService.save(pet);
+                        Pet savedPet = petService.save(pet);
+                        pet.setId(savedPet.getId());
                         System.out.println("Saved pet into db: "+pet.getName());
                     }
                 });
