@@ -1,30 +1,31 @@
 package com.spring.learn.spring_pet_clinic.map;
 
-import com.spring.learn.spring_pet_clinic.model.PetType;
-import com.spring.learn.spring_pet_clinic.services.PetTypeService;
+import com.spring.learn.spring_pet_clinic.model.Speciality;
+import com.spring.learn.spring_pet_clinic.services.SpecialityService;
 import org.springframework.stereotype.Service;
 
 import java.util.Set;
 
 @Service
-public class PetTypeServiceMap extends AbstractMapService<PetType, Long> implements PetTypeService {
+public class SpecialityServiceMap extends AbstractMapService<Speciality, Long>  implements SpecialityService {
+
     @Override
-    public PetType findById(Long aLong) {
+    public Speciality findById(Long aLong) {
         return super.findById(aLong);
     }
 
     @Override
-    public PetType save(PetType object) {
+    public Speciality save(Speciality object) {
         return super.save(object);
     }
 
     @Override
-    public Set<PetType> findAll() {
+    public Set<Speciality> findAll() {
         return super.findAll();
     }
 
     @Override
-    public void delete(PetType obj) {
+    public void delete(Speciality obj) {
         super.delete(obj);
     }
 
