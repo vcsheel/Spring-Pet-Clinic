@@ -1,1 +1,1 @@
-#  com.spring.learn.spring_pet_clinic
+ Pet Clinic Project using Spring
