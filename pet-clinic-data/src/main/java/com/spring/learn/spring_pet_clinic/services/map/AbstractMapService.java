@@ -1,4 +1,4 @@
-package com.spring.learn.spring_pet_clinic.map;
+package com.spring.learn.spring_pet_clinic.services.map;
 
 import com.spring.learn.spring_pet_clinic.model.BaseEntity;
 
