@@ -14,7 +14,7 @@
     </parent>
     <groupId>com.spring.learn</groupId>
     <artifactId>spring_pet_clinic</artifactId>
-    <version>0.0.2-SNAPSHOT</version>
+    <version>0.0.2</version>
     <name>spring_pet_clinic</name>
     <description>SFG Pet Clinic Project</description>
 
@@ -46,7 +46,7 @@
 
     <scm>
         <developerConnection>scm:git:git@github.com-personal:vcsheel/spring_pet_clinic.git</developerConnection>
-        <tag>HEAD</tag>
+        <tag>spring_pet_clinic-0.0.2</tag>
     </scm>
 
 </project>
