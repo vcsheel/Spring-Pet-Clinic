@@ -5,11 +5,16 @@ import com.spring.learn.spring_pet_clinic.model.Pet;
 import com.spring.learn.spring_pet_clinic.services.OwnerService;
 import com.spring.learn.spring_pet_clinic.services.PetService;
 import com.spring.learn.spring_pet_clinic.services.PetTypeService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
+@Slf4j
 @Service
 @Profile({"default", "map"})
 public class OwnerMapService extends AbstractMapService<Owner, Long> implements OwnerService {
@@ -81,5 +86,18 @@ public class OwnerMapService extends AbstractMapService<Owner, Long> implements 
                 .filter(owner -> owner.getLastName().equalsIgnoreCase(lastName))
                 .findFirst()
                 .orElse(null);
+    }
+
+    @Override
+    public List<Owner> findAllByLastNameLike(String lastName) {
+
+        lastName = lastName.substring(1,lastName.length()-1);
+        String finalLastName = lastName;
+
+        log.debug("Got last name: "+lastName);
+
+        return this.findAll().stream()
+                .filter(owner -> owner.getLastName().contains(finalLastName)).collect(Collectors.toList());
+
     }
 }
