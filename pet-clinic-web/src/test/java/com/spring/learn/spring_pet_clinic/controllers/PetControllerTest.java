@@ -1,6 +1,7 @@
 package com.spring.learn.spring_pet_clinic.controllers;
 
 import com.spring.learn.spring_pet_clinic.model.Owner;
+import com.spring.learn.spring_pet_clinic.model.Pet;
 import com.spring.learn.spring_pet_clinic.model.PetType;
 import com.spring.learn.spring_pet_clinic.services.OwnerService;
 import com.spring.learn.spring_pet_clinic.services.PetService;
@@ -75,6 +76,31 @@ class PetControllerTest {
         when(petTypeService.findAll()).thenReturn(petTypes);
 
         mockMvc.perform(post("/owners/1/pets/new"))
+                .andExpect(status().is3xxRedirection())
+                .andExpect(view().name("redirect:/owners/1"));
+
+        verify(petService).save(any());
+    }
+
+    @Test
+    void initUpdatePetForm() throws Exception {
+        when(ownerService.findById(anyLong())).thenReturn(owner);
+        when(petTypeService.findAll()).thenReturn(petTypes);
+        when(petService.findById(anyLong())).thenReturn(Pet.builder().id(1L).build());
+
+        mockMvc.perform(get("/owners/1/pets/1/edit"))
+                .andExpect(status().isOk())
+                .andExpect(view().name(CREATE_OR_UPDATE_PET_FORM_VIEW))
+                .andExpect(model().attributeExists("owner"))
+                .andExpect(model().attributeExists("pet"));
+    }
+
+    @Test
+    void processUpdatePetForm() throws Exception {
+        when(ownerService.findById(anyLong())).thenReturn(owner);
+        when(petTypeService.findAll()).thenReturn(petTypes);
+
+        mockMvc.perform(post("/owners/1/pets/1/edit"))
                 .andExpect(status().is3xxRedirection())
                 .andExpect(view().name("redirect:/owners/1"));
 
